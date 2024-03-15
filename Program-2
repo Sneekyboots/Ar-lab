@@ -1,0 +1,20 @@
+using UnityEngine;
+using UnityEngine.UI;
+
+public class MaterialChanger : MonoBehaviour
+{
+    public Button yourButton;
+    public Renderer objectRenderer;
+    public Material[] materials;
+    private int currentMaterialIndex = 0;
+
+    void Start()
+    {
+        yourButton.onClick.AddListener(() => ChangeObjectMaterial(objectRenderer, materials));
+    }
+
+    public void ChangeObjectMaterial(Renderer objectRenderer, Material[] newMaterials)
+    {
+        currentMaterialIndex = (currentMaterialIndex + 1) % newMaterials.Length;
+        objectRenderer.material = newMaterials[currentMaterialIndex];
+    }
