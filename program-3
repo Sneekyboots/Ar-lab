@@ -1,0 +1,24 @@
+using UnityEngine;
+
+public class LoadAssetsOnClick : MonoBehaviour
+{
+    public GameObject[] assets; // Assign your assets in the Unity editor
+    private int currentAsset = 0;
+    private GameObject currentInstance;
+
+    public void OnButtonClick()
+    {   
+        if (currentAsset < assets.Length)
+        {
+            // Destroy the previous asset if it exists
+            if (currentInstance != null)
+            {
+                Destroy(currentInstance);
+            }
+
+            // Instantiate the next asset and keep a reference to it
+            currentInstance = Instantiate(assets[currentAsset], new Vector3(325,0,130),Quaternion.Euler(0, 150, 0));
+            currentAsset++;
+        }
+    }
+}}
